@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wenjun Yang · 杨文君 — AI 教研 / 信息技术教育</title>
+<meta name="description" content="Wenjun Yang (杨文君) — Educational technology graduate from Shenzhen University. AI curriculum designer & K-12 information technology educator. Portfolio." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&amp;family=Manrope:wght@300;400;500;600;700&amp;family=Noto+Serif+SC:wght@400;500;700;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
+
+<style>
+:root {
+  --bg: #F5F1E8;
+  --bg-alt: #EFE9DA;
+  --ink: #1A1A1A;
+  --ink-soft: #3A3A3A;
+  --ink-mute: #6B6B6B;
+  --rule: #1A1A1A;
+  --accent: #C8472D;
+  --accent-soft: #E8C9BD;
+  --paper: #FBF8F0;
+  --shadow: 0 1px 0 rgba(26,26,26,0.08);
+
+  --serif: "Fraunces", "Noto Serif SC", "Songti SC", serif;
+  --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  --cn: "Noto Serif SC", "Songti SC", serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* ====== Paper grain texture ====== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ====== Layout primitives ====== */
+.wrap {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  z-index: 2;
+}
+
+.rule {
+  height: 1px;
+  background: var(--rule);
+  width: 100%;
+}
+.rule-thick { height: 3px; background: var(--ink); }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.section-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+/* ====== Top bar / masthead ====== */
+.masthead {
+  border-bottom: 1px solid var(--ink);
+  padding: 18px 0 14px;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+.masthead .wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.masthead-title {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  font-variation-settings: "SOFT" 50, "WONK" 1;
+}
+.masthead-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+  margin-left: 6px;
+}
+.masthead-meta {
+  display: flex;
+  gap: 28px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.masthead-meta span { white-space: nowrap; }
+.masthead-meta b { color: var(--ink); font-weight: 500; }
+
+.lang-switch { display: inline-flex; gap: 6px; align-items: center; }
+.lang-switch a {
+  color: var(--ink-mute);
+  transition: color 0.3s;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+.lang-switch a:hover { color: var(--accent); }
+.lang-switch .lang-active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+  font-weight: 500;
+}
+.lang-sep { color: var(--ink-mute); opacity: 0.4; }
+
+/* ====== Hero / Cover ====== */
+.cover {
+  padding: 56px 0 48px;
+  position: relative;
+}
+
+.cover-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: 32px;
+  align-items: end;
+}
+
+.cover-issue {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  align-self: start;
+  margin-top: 20px;
+  border-left: 1px solid var(--ink);
+  padding-left: 12px;
+  line-height: 1.4;
+}
+
+.cover-headline {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(48px, 7.5vw, 108px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 144;
+}
+.cover-headline .it {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+.cover-headline .cn {
+  font-family: var(--cn);
+  font-weight: 700;
+  font-size: 0.55em;
+  display: block;
+  margin-top: 10px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+.cover-deck {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  max-width: 38ch;
+  margin-top: 28px;
+}
+.cover-deck::before {
+  content: "❋";
+  color: var(--accent);
+  margin-right: 8px;
+  font-style: normal;
+}
+
+.cover-side {
+  align-self: end;
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  line-height: 1.8;
+}
+.cover-side .num {
+  font-family: var(--serif);
+  font-size: 80px;
+  font-weight: 200;
+  font-style: italic;
+  display: block;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 8px;
+  font-variation-settings: "SOFT" 100;
+}
+
+/* ====== Role switcher (under cover) ====== */
+.role-switch {
+  margin-top: 56px;
+  padding: 28px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.role-switch-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.role-switch-label::before {
+  content: "";
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.role-tabs {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  padding: 4px;
+  background: var(--paper);
+}
+.role-tab {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.role-tab.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+.role-tab:not(.active):hover {
+  color: var(--ink);
+}
+
+.role-pdf {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+}
+.role-pdf:hover { color: var(--accent); border-color: var(--accent); }
+.role-pdf::after {
+  content: "↓";
+  font-family: var(--serif);
+  font-size: 14px;
+  transition: transform 0.3s;
+}
+.role-pdf:hover::after { transform: translateY(2px); }
+
+/* ====== Section header ====== */
+.section {
+  padding: 100px 0 60px;
+  position: relative;
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  align-items: baseline;
+  margin-bottom: 56px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--ink);
+}
+.section-head-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 56px;
+  color: var(--accent);
+  font-variation-settings: "SOFT" 100;
+  line-height: 1;
+}
+.section-head-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+}
+.section-head-title em {
+  font-style: italic;
+  font-weight: 300;
+}
+.section-head-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  align-self: end;
+  text-align: right;
+}
+
+/* ====== About / SOP ====== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+}
+
+.about-aside {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  line-height: 2;
+}
+.about-aside dt {
+  color: var(--ink);
+  margin-top: 18px;
+  font-weight: 500;
+}
+.about-aside dt:first-child { margin-top: 0; }
+.about-aside dd { color: var(--ink-soft); text-transform: none; letter-spacing: 0.04em; font-family: var(--sans); font-size: 13px; }
+
+.about-body {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--ink);
+  font-weight: 400;
+}
+.about-body p { margin-bottom: 1.2em; }
+.about-body p:first-child {
+  font-size: 26px;
+  line-height: 1.4;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink-soft);
+  margin-bottom: 1.4em;
+}
+.about-body p:first-child::first-letter {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 4em;
+  float: left;
+  line-height: 0.85;
+  margin: 8px 12px 0 0;
+  color: var(--accent);
+  font-style: normal;
+  font-variation-settings: "SOFT" 50, "WONK" 1;
+}
+.about-body strong {
+  font-weight: 700;
+  background: linear-gradient(180deg, transparent 60%, var(--accent-soft) 60%);
+  padding: 0 2px;
+}
+.about-body em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* ====== Selected Works ====== */
+.works {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--ink);
+}
+.work {
+  border-bottom: 1px solid var(--ink);
+  padding: 40px 32px 40px 0;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.5s;
+}
+.work:nth-child(odd) { padding-right: 32px; border-right: 1px solid var(--ink); }
+.work:nth-child(even) { padding-left: 32px; }
+
+.work-tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.work-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--accent);
+}
+.work-cat {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  padding: 4px 10px;
+  border: 1px solid var(--ink-mute);
+  border-radius: 999px;
+}
+
+.work-visual {
+  height: 220px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
+}
+.work:hover .work-visual { transform: translateY(-6px); }
+
+.work-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: 12px;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+}
+.work-title em { font-style: italic; }
+
+.work-cn {
+  font-family: var(--cn);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.work-desc {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+}
+
+.work-meta {
+  display: flex;
+  gap: 20px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  padding-top: 16px;
+  border-top: 1px dashed var(--ink-mute);
+  flex-wrap: wrap;
+}
+.work-meta b { color: var(--accent); font-weight: 500; }
+
+.work-arrow {
+  position: absolute;
+  top: 40px;
+  right: 32px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+  opacity: 0;
+  transform: translate(-8px, 8px);
+}
+.work:hover .work-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+  background: var(--accent);
+}
+
+/* Visual treatments per work */
+.viz-grad-1 {
+  background:
+    radial-gradient(circle at 20% 30%, var(--accent) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, #2D5F8C 0%, transparent 40%),
+    var(--bg-alt);
+}
+.viz-grad-2 {
+  background:
+    repeating-linear-gradient(45deg, transparent 0 10px, rgba(200,71,45,0.08) 10px 11px),
+    var(--paper);
+}
+.viz-grad-3 {
+  background:
+    radial-gradient(ellipse at center, var(--accent-soft) 0%, var(--bg-alt) 70%);
+}
+.viz-grad-4 {
+  background:
+    linear-gradient(135deg, #2A2A2A 0%, #4A3A2A 100%);
+  color: var(--paper);
+}
+.viz-grad-5 {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 18px, rgba(26,26,26,0.05) 18px 19px),
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(26,26,26,0.05) 18px 19px),
+    #E8DFC9;
+}
+
+.viz-mark {
+  font-family: var(--serif);
+  font-size: 84px;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+  text-align: center;
+  line-height: 1;
+}
+.viz-mark .small {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-style: normal;
+  font-family: var(--mono);
+  margin-top: 16px;
+  opacity: 0.7;
+}
+
+/* ====== Teaching panel (info-tech) ====== */
+.teach {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.teach::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.6;
+  pointer-events: none;
+}
+.teach > .wrap { position: relative; z-index: 2; }
+
+.teach .section-head { border-bottom-color: rgba(245,241,232,0.2); }
+.teach .section-head-num { color: var(--accent-soft); }
+.teach .section-head-title { color: var(--paper); }
+.teach .section-head-meta { color: rgba(245,241,232,0.5); }
+
+.teach-grid {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  gap: 64px;
+  align-items: start;
+}
+.teach-stmt {
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.45;
+  font-weight: 300;
+  color: var(--paper);
+}
+.teach-stmt strong {
+  background: linear-gradient(180deg, transparent 65%, var(--accent) 65%);
+  font-weight: 400;
+  padding: 0 3px;
+}
+.teach-stmt em { font-style: italic; color: var(--accent-soft); }
+
+.teach-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(245,241,232,0.15);
+  border: 1px solid rgba(245,241,232,0.15);
+}
+.stat {
+  background: var(--ink);
+  padding: 24px 20px;
+}
+.stat-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--accent-soft);
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+  margin-bottom: 8px;
+}
+.stat-num sup {
+  font-size: 18px;
+  vertical-align: top;
+  margin-left: 4px;
+}
+.stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245,241,232,0.7);
+  line-height: 1.5;
+}
+
+.teach-courses {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.course-card {
+  border: 1px solid rgba(245,241,232,0.2);
+  padding: 24px 20px;
+  border-radius: 4px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.course-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.course-card-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--accent-soft);
+  margin-bottom: 12px;
+}
+.course-card-title {
+  font-family: var(--cn);
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--paper);
+}
+.course-card-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(245,241,232,0.65);
+}
+
+/* ====== Skills ====== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+}
+.skill-block {
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 32px 24px;
+  background: var(--paper);
+  transition: background 0.4s;
+}
+.skill-block:hover { background: var(--bg-alt); }
+.skill-cat {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.skill-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+}
+.skill-list {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  list-style: none;
+}
+.skill-list li::before {
+  content: "—";
+  margin-right: 8px;
+  color: var(--accent);
+}
+
+/* ====== Awards ====== */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.award {
+  padding: 28px 24px;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  position: relative;
+  transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+}
+.award:hover {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 var(--accent);
+}
+.award:hover .award-medal { color: var(--accent-soft); }
+.award:hover .award-meta { color: rgba(245,241,232,0.6); border-color: rgba(245,241,232,0.3); }
+
+.award-medal {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 36px;
+  color: var(--accent);
+  margin-bottom: 16px;
+  font-variation-settings: "SOFT" 100;
+  transition: color 0.4s;
+}
+.award-title {
+  font-family: var(--cn);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.award-en {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-mute);
+  margin-bottom: 16px;
+}
+.award:hover .award-en { color: rgba(245,241,232,0.6); }
+.award-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  padding-top: 12px;
+  border-top: 1px dashed var(--ink-mute);
+  transition: all 0.4s;
+}
+
+/* ====== Contact / Footer ====== */
+.contact {
+  padding: 100px 0 40px;
+  background: var(--bg);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 64px;
+  align-items: end;
+  margin-bottom: 56px;
+}
+.contact-headline {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 144;
+}
+.contact-headline em {
+  font-style: italic;
+  color: var(--accent);
+}
+.contact-list {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 2.2;
+  letter-spacing: 0.06em;
+}
+.contact-list dt {
+  color: var(--ink-mute);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 16px;
+}
+.contact-list dt:first-child { margin-top: 0; }
+.contact-list dd a {
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, color 0.3s;
+}
+.contact-list dd a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.colophon {
+  border-top: 1px solid var(--ink);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.colophon b { color: var(--ink); font-weight: 500; }
+
+/* ====== Scroll-trigger animations ====== */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s cubic-bezier(.2,.8,.2,1), transform 0.9s cubic-bezier(.2,.8,.2,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+
+/* Role-specific content reveal */
+[data-role-content] { display: none; }
+[data-role-content].show { display: block; }
+
+.role-fade {
+  animation: roleFade 0.6s cubic-bezier(.2,.8,.2,1);
+}
+@keyframes roleFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Teaching section toggle */
+.teach { display: none; }
+.teach.show { display: block; }
+
+/* ====== Responsive ====== */
+@media (max-width: 960px) {
+  .wrap { padding: 0 24px; }
+  .cover { padding: 48px 0 40px; }
+  .cover-grid { grid-template-columns: 1fr; gap: 12px; }
+  .cover-issue { writing-mode: horizontal-tb; transform: none; border-left: none; border-top: 1px solid var(--ink); padding-left: 0; padding-top: 8px; margin-top: 0; }
+  .cover-side { text-align: left; }
+  .cover-side .num { font-size: 56px; }
+
+  .role-switch { flex-direction: column; align-items: flex-start; gap: 18px; }
+
+  .section-head { grid-template-columns: 1fr; gap: 12px; }
+  .section-head-meta { text-align: left; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .about-body { font-size: 17px; }
+  .about-body p:first-child { font-size: 22px; }
+
+  .works { grid-template-columns: 1fr; }
+  .work, .work:nth-child(odd), .work:nth-child(even) {
+    border-right: none;
+    padding: 32px 0;
+  }
+
+  .teach-grid { grid-template-columns: 1fr; gap: 32px; }
+  .teach-stmt { font-size: 19px; }
+
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .awards-grid { grid-template-columns: 1fr; }
+
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; align-items: start; }
+  .colophon { flex-direction: column; gap: 8px; }
+
+  .masthead-meta { font-size: 9px; gap: 14px; }
+}
+
+@media (max-width: 560px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .role-tabs { flex-direction: column; width: 100%; border-radius: 12px; }
+  .role-tab { border-radius: 8px; text-align: center; }
+  .teach-stats { grid-template-columns: 1fr; }
+}
+
+/* ====== Modal / Case study overlay ====== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(.2,.8,.2,1);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 24px;
+  overflow-y: auto;
+}
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal {
+  background: var(--paper);
+  width: 100%;
+  max-width: 920px;
+  border-radius: 4px;
+  border: 1px solid var(--ink);
+  position: relative;
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+.modal-overlay.open .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-close:hover {
+  background: var(--ink);
+  color: var(--paper);
+  transform: rotate(90deg);
+}
+
+.modal-hero {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--ink);
+}
+.modal-hero-mark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 96px;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+  text-align: center;
+  line-height: 1;
+}
+.modal-hero-mark .small {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-style: normal;
+  font-family: var(--mono);
+  margin-top: 16px;
+  opacity: 0.7;
+}
+
+.modal-body {
+  padding: 40px 56px 48px;
+}
+
+.modal-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 12px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.modal-eyebrow b { color: var(--accent); font-weight: 500; }
+
+.modal-title {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+}
+.modal-title em { font-style: italic; }
+
+.modal-cn {
+  font-family: var(--cn);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+  letter-spacing: 0.02em;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.modal-section { margin-bottom: 28px; }
+.modal-section-h {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.modal-section-h::before {
+  content: "— ";
+}
+.modal-section p {
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.modal-section p:last-child { margin-bottom: 0; }
+.modal-section strong {
+  font-weight: 600;
+  background: linear-gradient(180deg, transparent 60%, var(--accent-soft) 60%);
+  padding: 0 2px;
+}
+.modal-section em { font-style: italic; color: var(--accent); }
+
+.modal-section ul {
+  list-style: none;
+  padding: 0;
+}
+.modal-section ul li {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  padding-left: 22px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.modal-section ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+}
+.modal-section ul li b { color: var(--ink); font-weight: 600; }
+
+.modal-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  margin-top: 32px;
+}
+.modal-meta-item {
+  background: var(--paper);
+  padding: 16px 18px;
+}
+.modal-meta-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 6px;
+}
+.modal-meta-value {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 500;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+}
+.modal-meta-value em { font-style: italic; color: var(--accent); }
+
+.modal-cta-hint {
+  margin-top: 24px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px dashed var(--ink-mute);
+}
+.modal-cta-hint kbd {
+  font-family: var(--mono);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  margin: 0 2px;
+}
+
+/* Indicate works are clickable */
+.work::after {
+  content: "Read case →";
+  position: absolute;
+  bottom: 40px;
+  right: 32px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+}
+.work:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--accent);
+}
+
+body.modal-open { overflow: hidden; }
+
+@media (max-width: 720px) {
+  .modal-overlay { padding: 20px 12px; }
+  .modal-body { padding: 28px 24px 32px; }
+  .modal-title { font-size: 26px; }
+  .modal-hero { height: 160px; }
+  .modal-hero-mark { font-size: 56px; }
+  .work::after { display: none; }
+}
+
+/* Print styles */
+@media print {
+  .role-switch, .masthead, .modal-overlay { display: none; }
+  body { background: white; }
+  body::before { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ====== MASTHEAD ====== -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-title">
+      Wenjun Yang <em>— 杨文君</em>
+    </div>
+    <div class="masthead-meta">
+      <span>Vol. <b>01</b></span>
+      <span>Issue <b>2025</b></span>
+      <span>Shenzhen <b>· 深圳</b></span>
+      <span class="lang-switch">
+        <a href="#" class="lang-active">中</a>
+        <span class="lang-sep">/</span>
+        <a href="en.html">EN</a>
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- ====== COVER ====== -->
+<section class="cover">
+  <div class="wrap">
+    <div class="cover-grid">
+      <div class="cover-issue reveal">
+        Educational<br />Technology<br />— B.Eng. ’25 ——<br />Shenzhen Univ.
+      </div>
+
+      <div>
+        <div class="eyebrow reveal">— A Portfolio In Progress / 作品集 —</div>
+        <h1 class="cover-headline reveal reveal-d1" style="margin-top:18px;">
+          Designing<br />
+          <span class="it">curricula</span> that<br />
+          machines can<br />
+          <span class="it">teach.</span>
+          <span class="cn">设计 AI 也能讲明白的课。</span>
+        </h1>
+        <p class="cover-deck reveal reveal-d2">
+          AI 课程设计 · 学习体验设计（LXD）· K-12 信息技术教育。
+          深圳大学教育技术学第一名，腾讯编程平台已上线区级课程。
+        </p>
+      </div>
+
+      <div class="cover-side reveal reveal-d3">
+        <span class="num">01</span>
+        Cover<br />Story<br />— ❋ —<br />Profile
+      </div>
+    </div>
+
+    <!-- Role switcher -->
+    <div class="role-switch reveal reveal-d4">
+      <div class="role-switch-label">Now Reading As</div>
+      <div class="role-tabs" role="tablist" aria-label="Role">
+        <button class="role-tab active" data-role="ai" role="tab" aria-selected="true">
+          AI 课程设计 / 教研
+        </button>
+        <button class="role-tab" data-role="teacher" role="tab" aria-selected="false">
+          信息技术教师
+        </button>
+      </div>
+      <a class="role-pdf" href="#" id="downloadPdf">下载 PDF 简历</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ABOUT / SOP ====== -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-head-num">§ 01</div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:8px;">Statement of Purpose</div>
+        <h2 class="section-head-title">A note on what I <em>actually</em> do.</h2>
+      </div>
+      <div class="section-head-meta">
+        — Self<br />Portrait —
+      </div>
+    </div>
+
+    <!-- AI version -->
+    <div data-role-content="ai" class="show">
+      <div class="about-grid">
+        <aside class="about-aside reveal">
+          <dl>
+            <dt>专业</dt>
+            <dd>教育技术学（工学学士）</dd>
+            <dt>排名</dt>
+            <dd>1 / 47 · GPA 4.0/4.5</dd>
+            <dt>资质</dt>
+            <dd>教师资格证（信息技术）</dd>
+            <dt>求职意向</dt>
+            <dd>AI 课程设计 / 教研员 / LXD 学习体验设计</dd>
+            <dt>定位区域</dt>
+            <dd>深圳南山 · 高新园</dd>
+          </dl>
+        </aside>
+
+        <div class="about-body reveal reveal-d1">
+          <p>
+            我做的不是「写一份漂亮的教案」——而是把一个 AI 概念，<em>拆成五年级也能跟上</em>的认知阶梯，并让它在真实课堂、真实平台上跑起来。
+          </p>
+          <p>
+            在校期间，我作为<strong>项目组唯一的本科生</strong>参与龙华区普惠 AI 教育行动，独立完成「教学目标拆解 → AI 训练数据集制作 → 程序脚本编写 → 数字人微课视频」的完整内容链条；课程最终在<strong>腾讯编程平台正式上线</strong>，向龙华全区中小学推广。
+          </p>
+          <p>
+            这之后，我把同样的工程化思路延伸到自己的毕业设计——一套部署在云端的轻量化 AI 数字人语伴系统。从 33 款口语 App 的功能拆解，到 8 位真实用户的访谈与原型迭代，再到 ASR / LLM / TTS / 唇形同步多模态管线的整合，我做的是「把研究里的概念，落到学生用得起、用得稳的产品形态里」。
+          </p>
+          <p>
+            我相信好的 AI 教育产品，<em>不是把技术塞给老师</em>，而是给老师省下 70% 的备课摩擦，让他们专心做那件机器替不了的事——回应学生此刻的困惑。这是我接下来想继续做的事。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teacher version -->
+    <div data-role-content="teacher">
+      <div class="about-grid">
+        <aside class="about-aside reveal">
+          <dl>
+            <dt>资质</dt>
+            <dd>教师资格证（信息技术方向）</dd>
+            <dt>实习评估</dt>
+            <dd>新安外国语 · A 级优秀</dd>
+            <dt>独立授课</dt>
+            <dd>15+ 节信息技术课</dd>
+            <dt>普通话</dt>
+            <dd>二级甲等</dd>
+            <dt>覆盖学段</dt>
+            <dd>小学高年级 · 初中</dd>
+          </dl>
+        </aside>
+
+        <div class="about-body reveal reveal-d1">
+          <p>
+            我希望成为一个<em>能让学生主动多问一句「为什么」</em>的信息技术老师——这门课不该是「点开 PPT 抄一遍操作」，它本来可以更像一场温和的拆解：把日常用得到的工具，还原成学生看得懂的逻辑。
+          </p>
+          <p>
+            在新安外国语学校实习期间，我独立承担了<strong>15 节以上</strong>信息技术课，覆盖 AI 工具应用、编程基础、媒体制作三大板块，获指导教师<strong>A 级优秀评估</strong>。我也参与主持了学校「AI 赋能」科技节，设计生成式 AI 艺术创作课堂，带五六年级学生从工具体验走到创作输出。
+          </p>
+          <p>
+            我的教学风格更靠近<em>「课程设计师」而非纯讲授者</em>：习惯先把一节课的目标和支架画清楚，再决定哪些环节要老师来讲、哪些环节让学生先撞一次南墙。这套方法论也来自我的本科训练——教育技术学专业排名第一，主修课程包含 IT 课程标准与教材研究、人工智能导论、智能机器人，全部 A+。
+          </p>
+          <p>
+            我能教好一节课，也能把一个学期的课程脉络整体设计出来——这是我希望带到团队里的东西。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SELECTED WORKS ====== -->
+<section class="section" id="works">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-head-num">§ 02</div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:8px;">Selected Works</div>
+        <h2 class="section-head-title">Six projects, <em>one through-line</em>.</h2>
+      </div>
+      <div class="section-head-meta">
+        — 2023 / 2025 —<br />
+        Field Notes
+      </div>
+    </div>
+
+    <div class="works">
+
+      <!-- Work 01 -->
+      <article class="work reveal" data-work="01">
+        <div class="work-tag">
+          <span class="work-num">— Project 001</span>
+          <span class="work-cat">Curriculum · 区级课程</span>
+        </div>
+        <div class="work-visual viz-grad-1">
+          <div class="viz-mark">
+            龙华
+            <span class="small">Longhua AI Edu Initiative</span>
+          </div>
+        </div>
+        <h3 class="work-title">A K-5 AI <em>curriculum unit</em> shipped to a district platform.</h3>
+        <div class="work-cn">龙华区普惠 AI 教育 · 五年级教学单元</div>
+        <p class="work-desc">
+          作为项目组唯一参与的本科生，独立设计 2 课时完整教学单元：教学目标拆解 → AI 训练数据集制作 → 程序脚本编写 → 数字人微课视频，全流程独立交付。基于多轮教师反馈完成内容迭代。
+        </p>
+        <div class="work-meta">
+          <span><b>已上线</b> 腾讯编程平台</span>
+          <span>2024.06—09</span>
+          <span>独立交付</span>
+        </div>
+        <div class="work-arrow">→</div>
+      </article>
+
+      <!-- Work 02 -->
+      <article class="work reveal reveal-d1" data-work="02">
+        <div class="work-tag">
+          <span class="work-num">— Project 002</span>
+          <span class="work-cat">Product · 毕业设计</span>
+        </div>
+        <div class="work-visual viz-grad-3">
+          <div class="viz-mark">
+            语伴
+            <span class="small">Lightweight AI Digital Human</span>
+          </div>
+        </div>
+        <h3 class="work-title">A <em>lightweight AI tutor</em> that talks back—not just scores you.</h3>
+        <div class="work-cn">AI 轻量化数字人语伴系统</div>
+        <p class="work-desc">
+          云端部署的轻量化 AI 数字人口语语伴。33 款 App 功能对比 + 8 位用户访谈提炼需求；ASR / LLM / TTS / 唇形同步多模态管线整合；普通设备秒级响应，降低语言学习评估焦虑。
+        </p>
+        <div class="work-meta">
+          <span>产品负责人</span>
+          <span>2024.09—25.04</span>
+          <span><b>用户研究 → 原型 → 部署</b></span>
+        </div>
+        <div class="work-arrow">→</div>
+      </article>
+
+      <!-- Work 03 -->
+      <article class="work reveal" data-work="03">
+        <div class="work-tag">
+          <span class="work-num">— Project 003</span>
+          <span class="work-cat">Research · LXD 研究</span>
+        </div>
+        <div class="work-visual viz-grad-2">
+          <div class="viz-mark">
+            LXD
+            <span class="small">Scaffolded Argumentative Writing</span>
+          </div>
+        </div>
+        <h3 class="work-title">A <em>scaffolded writing tool</em> built on the iterative design loop.</h3>
+        <div class="work-cn">AI 支持的学习体验设计研究 · 议论文写作支架</div>
+        <p class="work-desc">
+          参与 LXD 系统文献综述，确立迭代设计循环为核心框架。独立开发集成 AI 写作 API 的 Web 原型，嵌入思维链支架支持学生议论文写作，完成设计→测试→迭代全流程。
+        </p>
+        <div class="work-meta">
+          <span>研究成员</span>
+          <span>2024.09—25.04</span>
+          <span>深圳大学</span>
+        </div>
+        <div class="work-arrow">→</div>
+      </article>
+
+      <!-- Work 04 -->
+      <article class="work reveal reveal-d1" data-work="04">
+        <div class="work-tag">
+          <span class="work-num">— Project 004</span>
+          <span class="work-cat">Visualization · 全国二等奖</span>
+        </div>
+        <div class="work-visual viz-grad-4">
+          <div class="viz-mark" style="color:var(--accent-soft)">
+            一带一路
+            <span class="small">Motion Infographic · Belt &amp; Road</span>
+          </div>
+        </div>
+        <h3 class="work-title"><em>30+ datasets,</em> turned into a story a learner can follow.</h3>
+        <div class="work-cn">《一带一路 · 百花齐放》动态 MG 信息可视化</div>
+        <p class="work-desc">
+          整合 30+ 套数据集，将复杂政治经济信息转化为易于学习者理解的动态图形叙事。聚焦学习者认知节奏，而非堆砌信息密度。
+        </p>
+        <div class="work-meta">
+          <span><b>全国二等奖</b></span>
+          <span>省级一等奖</span>
+          <span>项目负责人</span>
+        </div>
+        <div class="work-arrow">→</div>
+      </article>
+
+      <!-- Work 05 -->
+      <article class="work reveal" data-work="05">
+        <div class="work-tag">
+          <span class="work-num">— Project 005</span>
+          <span class="work-cat">Interactive · AR 漫画</span>
+        </div>
+        <div class="work-visual viz-grad-5">
+          <div class="viz-mark">
+            探索<br/>无限
+            <span class="small">HTML5 + AR Comic</span>
+          </div>
+        </div>
+        <h3 class="work-title">An <em>AR-powered HTML5 comic</em> for math &amp; aerospace.</h3>
+        <div class="work-cn">《探索无限》交互新媒体漫画</div>
+        <p class="work-desc">
+          HTML5 互动漫画，将抽象数学与航天知识可视化；集成 AR 沉浸式学习体验（Nomad 3D + Kivisense）。让学习者从「读」走到「触」。
+        </p>
+        <div class="work-meta">
+          <span><b>全国二等奖</b></span>
+          <span>省级一等奖</span>
+          <span>项目负责人</span>
+        </div>
+        <div class="work-arrow">→</div>
+      </article>
+
+      <!-- Work 06 -->
+      <article class="work reveal reveal-d1" data-work="06">
+        <div class="work-tag">
+          <span class="work-num">— Project 006</span>
+          <span class="work-cat">Interactive · 全国三等奖</span>
+        </div>
+        <div class="work-visual viz-grad-1" style="background: radial-gradient(circle at 30% 60%, #8C5A2D 0%, transparent 50%), radial-gradient(circle at 70% 30%, var(--accent) 0%, transparent 50%), var(--bg-alt);">
+          <div class="viz-mark">
+            拜师<br/>学医
+            <span class="small">2,000+ Interactions</span>
+          </div>
+        </div>
+        <h3 class="work-title"><em>2,000+ user interactions</em> with a Chinese medicine learning experience.</h3>
+        <div class="work-cn">《拜师学医》交互 HTML5 网页</div>
+        <p class="work-desc">
+          基于 Epub360 平台搭建的中医知识互动体验。上线后累计 2000+ 次用户交互。在「内容专业」与「交互友好」之间找到一条窄路。
+        </p>
+        <div class="work-meta">
+          <span><b>全国三等奖</b></span>
+          <span>省级二等奖</span>
+          <span>项目负责人</span>
+        </div>
+        <div class="work-arrow">→</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====== TEACHING (only for teacher role) ====== -->
+<section class="teach" id="teaching">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-head-num">§ 03</div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:8px; color: rgba(245,241,232,0.6);">In The Classroom</div>
+        <h2 class="section-head-title">When the lesson plan <em>meets the room.</em></h2>
+      </div>
+      <div class="section-head-meta">
+        — 教学实践 —<br />
+        Practicum
+      </div>
+    </div>
+
+    <div class="teach-grid">
+      <div class="teach-stmt reveal">
+        <p style="margin-bottom:1.4em;">
+          深圳市新安外国语学校（集团）<em>· 信息技术实习教师 · 2024.03—07</em>
+        </p>
+        <p>
+          独立承担 <strong>15 节以上</strong>信息技术课，获指导教师 <strong>A 级优秀评估</strong>。同时参与主持学校「AI 赋能」科技节，<em>设计生成式 AI 艺术创作课堂</em>，带五六年级学生体验工具赋能创作全流程。
+        </p>
+      </div>
+
+      <div class="teach-stats reveal reveal-d1">
+        <div class="stat">
+          <div class="stat-num">15<sup>+</sup></div>
+          <div class="stat-label">独立授课<br/>节数</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">A</div>
+          <div class="stat-label">指导教师<br/>评估等级</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">教学板块<br/>覆盖</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5–6</div>
+          <div class="stat-label">主带年级<br/>（小学高段）</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="teach-courses">
+      <div class="course-card reveal">
+        <div class="course-card-num">— 01 / 教学板块</div>
+        <div class="course-card-title">AI 工具应用</div>
+        <div class="course-card-desc">从 ChatGPT、生成式 AI 艺术工具入门，到结构化使用方式，培养学生 AI 素养与判断力。</div>
+      </div>
+      <div class="course-card reveal reveal-d1">
+        <div class="course-card-num">— 02 / 教学板块</div>
+        <div class="course-card-title">编程基础</div>
+        <div class="course-card-desc">图形化编程入门，结合真实项目情境（小游戏、互动作品），降低初学者畏难感。</div>
+      </div>
+      <div class="course-card reveal reveal-d2">
+        <div class="course-card-num">— 03 / 教学板块</div>
+        <div class="course-card-title">媒体制作</div>
+        <div class="course-card-desc">图像、视频、动画基础工作流。鼓励学生从「使用工具」走向「为表达选择工具」。</div>
+      </div>
+      <div class="course-card reveal reveal-d3">
+        <div class="course-card-num">— 04 / 活动策划</div>
+        <div class="course-card-title">AI 赋能科技节</div>
+        <div class="course-card-desc">参与主持学校年度科技节，设计生成式 AI 艺术创作课堂，五六年级学生全程体验。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== AWARDS ====== -->
+<section class="section" id="awards">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-head-num">§ <span data-role-num data-ai="03" data-teacher="04">03</span></div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:8px;">Awards &amp; Recognition</div>
+        <h2 class="section-head-title">Things <em>peer reviewers</em> liked.</h2>
+      </div>
+      <div class="section-head-meta">
+        — 国家级 / 省级 —<br />
+        Competition
+      </div>
+    </div>
+
+    <div class="awards-grid">
+      <div class="award reveal">
+        <div class="award-medal">— Honor 01 —</div>
+        <div class="award-title">中国大学生计算机设计大赛</div>
+        <div class="award-en"><em>National Second Prize</em> × 2 + Third × 1</div>
+        <div class="award-meta">国家级 · 全国二等奖 ×2</div>
+      </div>
+      <div class="award reveal reveal-d1">
+        <div class="award-medal">— Honor 02 —</div>
+        <div class="award-title">校级 + 院级优秀毕业生</div>
+        <div class="award-en"><em>Outstanding Graduate</em></div>
+        <div class="award-meta">深圳大学 · 2025</div>
+      </div>
+      <div class="award reveal reveal-d2">
+        <div class="award-medal">— Honor 03 —</div>
+        <div class="award-title">学习之星 · 双创之星</div>
+        <div class="award-en"><em>Academic &amp; Innovation</em> Scholarships</div>
+        <div class="award-meta">2023—2025 · 多次获奖</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SKILLS ====== -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-head-num">§ <span data-role-num data-ai="04" data-teacher="05">04</span></div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:8px;">Toolkit</div>
+        <h2 class="section-head-title">What's in the <em>workshop</em>.</h2>
+      </div>
+      <div class="section-head-meta">
+        — Languages, Tools<br />
+        &amp; Methods —
+      </div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-block reveal">
+        <div class="skill-cat">— 01 / Pedagogy</div>
+        <div class="skill-title">教学与课程</div>
+        <ul class="skill-list">
+          <li>课程标准与教材研究</li>
+          <li>教学目标拆解与支架设计</li>
+          <li>教师资格证（信息技术）</li>
+          <li>普通话二级甲等</li>
+        </ul>
+      </div>
+      <div class="skill-block reveal reveal-d1">
+        <div class="skill-cat">— 02 / AI Stack</div>
+        <div class="skill-title">AI 工具栈</div>
+        <ul class="skill-list">
+          <li>ChatGPT · Claude · Cursor</li>
+          <li>腾讯智影（数字人微课）</li>
+          <li>Midjourney · 提示工程</li>
+          <li>ASR / LLM / TTS 多模态管线</li>
+        </ul>
+      </div>
+      <div class="skill-block reveal reveal-d2">
+        <div class="skill-cat">— 03 / Design</div>
+        <div class="skill-title">设计与开发</div>
+        <ul class="skill-list">
+          <li>Figma · Mugeda · Epub360</li>
+          <li>Adobe PS / PR / AE / AU</li>
+          <li>HTML / CSS / JavaScript</li>
+          <li>Unity · 3ds Max · Procreate</li>
+        </ul>
+      </div>
+      <div class="skill-block reveal reveal-d3">
+        <div class="skill-cat">— 04 / Research</div>
+        <div class="skill-title">研究方法</div>
+        <ul class="skill-list">
+          <li>SPSS · NVivo · Dycharts</li>
+          <li>用户访谈与系统文献综述</li>
+          <li>Python · 原型迭代</li>
+          <li>雅思 6.0 · CET-4</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <h2 class="contact-headline reveal">
+        Let's <em>talk</em>.<br />
+        欢迎<em>聊聊。</em>
+      </h2>
+      <dl class="contact-list reveal reveal-d1">
+        <dt>— Email</dt>
+        <dd><a href="mailto:2044566812@qq.com">2044566812@qq.com</a></dd>
+        <dt>— WeChat / Phone</dt>
+        <dd>150 1941 6741</dd>
+        <dt>— Portfolio</dt>
+        <dd><a href="https://youngwenjun.notion.site" target="_blank" rel="noopener">youngwenjun.notion.site</a></dd>
+        <dt>— Based In</dt>
+        <dd>Shenzhen · 深圳南山</dd>
+      </dl>
+    </div>
+
+    <div class="colophon">
+      <div>
+        <b>Colophon.</b> Set in Fraunces, Manrope &amp; Noto Serif SC. Hand-coded HTML/CSS/JS. No frameworks.
+      </div>
+      <div>
+        © 2025 <b>Wenjun Yang</b> · 杨文君 · All rights reserved.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== MODAL: case study overlay ====== -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+    <div class="modal-hero" id="modalHero">
+      <div class="modal-hero-mark" id="modalHeroMark"></div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// 1. Role switching (AI 教研 / 信息技术教师)
+// ============================================================
+const roleTabs = document.querySelectorAll('.role-tab');
+const roleContents = document.querySelectorAll('[data-role-content]');
+const teachSection = document.getElementById('teaching');
+const roleNumSpans = document.querySelectorAll('[data-role-num]');
+
+function setRole(role) {
+  roleTabs.forEach(t => {
+    const active = t.dataset.role === role;
+    t.classList.toggle('active', active);
+    t.setAttribute('aria-selected', active);
+  });
+
+  roleContents.forEach(c => {
+    const match = c.dataset.roleContent === role;
+    c.classList.toggle('show', match);
+    if (match) {
+      c.classList.remove('role-fade');
+      // Re-trigger fade
+      void c.offsetWidth;
+      c.classList.add('role-fade');
+    }
+  });
+
+  // Show teaching section only when role is teacher
+  if (role === 'teacher') {
+    teachSection.classList.add('show');
+  } else {
+    teachSection.classList.remove('show');
+  }
+
+  // Update section numbers
+  roleNumSpans.forEach(s => {
+    s.textContent = s.dataset[role];
+  });
+
+  // Update masthead pulse hint
+  document.documentElement.dataset.role = role;
+}
+
+roleTabs.forEach(t => t.addEventListener('click', () => setRole(t.dataset.role)));
+setRole('ai'); // default
+
+// ============================================================
+// 2. Scroll-triggered reveal animations
+// ============================================================
+const reveals = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(r => io.observe(r));
+} else {
+  reveals.forEach(r => r.classList.add('in'));
+}
+
+// ============================================================
+// 3. PDF download — generates print-friendly version on demand
+// ============================================================
+document.getElementById('downloadPdf').addEventListener('click', (e) => {
+  e.preventDefault();
+  const role = document.querySelector('.role-tab.active').dataset.role;
+  // Open print-ready resume page in new window
+  window.open('resume.html?role=' + role, '_blank');
+});
+
+// ============================================================
+// 4. Subtle parallax on cover number
+// ============================================================
+const coverNum = document.querySelector('.cover-side .num');
+if (coverNum && window.matchMedia('(min-width: 960px)').matches) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < 800) {
+      coverNum.style.transform = `translateY(${y * 0.15}px)`;
+    }
+  }, { passive: true });
+}
+
+// ============================================================
+// 5. Case study modals
+// ============================================================
+const workData = {
+  '01': {
+    mark: '龙华',
+    markSmall: 'Longhua AI Edu Initiative',
+    heroClass: 'viz-grad-1',
+    eyebrow: ['Project 001', 'Curriculum · 区级课程', '<b>已上线腾讯编程平台</b>'],
+    title: 'A K-5 AI <em>curriculum unit</em> shipped to a district platform.',
+    cn: '龙华区普惠 AI 教育行动 · 五年级教学单元',
+    sections: [
+      {
+        h: 'Brief / 项目背景',
+        body: '<p>区级政府主导的 AI 教育普惠项目，面向龙华区全区中小学推广 AI 课程资源。本人为项目组中<strong>唯一参与的本科生</strong>，承担五年级教学单元的全流程独立交付。</p>'
+      },
+      {
+        h: 'Role / 我的角色',
+        body: '<ul><li><b>课程设计师 + 内容工程师</b>，负责 2 课时完整 AI 教学单元的从无到有。</li><li>对接区教研员与一线教师，承接迭代反馈。</li></ul>'
+      },
+      {
+        h: 'Process / 工作流',
+        body: '<ul><li><b>教学目标拆解</b>：把抽象 AI 概念翻译成五年级可达成的能力目标。</li><li><b>AI 训练数据集制作</b>：为示范模型准备可控、可复现的小规模数据集。</li><li><b>程序脚本编写</b>：编写课堂演示脚本，确保普通教学设备能稳定运行。</li><li><b>数字人微课视频产出</b>：使用腾讯智影完成微课录制与剪辑。</li><li><b>多轮迭代</b>：基于教师试讲反馈调整难度曲线与活动设计。</li></ul>'
+      },
+      {
+        h: 'Outcome / 落地结果',
+        body: '<p>课程在<em>龙华区 AI 教育平台及腾讯编程平台正式上线</em>，面向全区课堂推广使用。这是我第一次完整经历一个 AI 教育产品从设计到上线的全过程，也是我后续聚焦"AI 课程产品化"方向的起点。</p>'
+      }
+    ],
+    meta: [
+      { label: 'Timeline', value: '2024.06—09' },
+      { label: 'Status', value: '<em>已上线</em>' },
+      { label: 'Role', value: '独立交付' },
+      { label: 'Audience', value: 'K-5' }
+    ]
+  },
+  '02': {
+    mark: '语伴',
+    markSmall: 'Lightweight AI Digital Human',
+    heroClass: 'viz-grad-3',
+    eyebrow: ['Project 002', 'Product · 毕业设计', '<b>云端部署</b>'],
+    title: 'A <em>lightweight AI tutor</em> that talks back—not just scores you.',
+    cn: 'AI 轻量化数字人语伴系统（毕业设计）',
+    sections: [
+      {
+        h: 'Problem / 起点',
+        body: '<p>市面上的口语学习工具普遍存在「<em>只有评分、缺乏互动感</em>」的问题——学生说一句、得一个分数，再说一句、再得一个分数。这种反馈循环让语言学习变成评估而非交流，并加剧了表达焦虑。</p>'
+      },
+      {
+        h: 'Research / 用户研究',
+        body: '<ul><li>对 <b>33 款</b>主流口语学习 App 做功能对比，建立功能矩阵。</li><li>对 <b>8 位</b>目标用户开展深度访谈：初高中学生、英语教师、大学教授。</li><li>提炼出三层用户需求：<em>低门槛接入、拟人交互、多轮语义反馈</em>。</li></ul>'
+      },
+      {
+        h: 'System / 系统架构',
+        body: '<ul><li>整合 <b>ASR / LLM / TTS / 唇形同步</b>多模态管线。</li><li>支持用户<b>自定义数字人形象</b>，提升参与感。</li><li>轻量化设计，普通设备秒级响应。</li><li>部署在云服务器，跨设备稳定可用。</li></ul>'
+      },
+      {
+        h: 'What I Learned / 收获',
+        body: '<p>这个项目让我打通了"研究→产品→部署"全链路。<strong>真正的难点不是模型，而是把多模态延迟控制在用户可以接受的对话节奏里</strong>，以及在产品层提供合适的失败兜底。这套思路是我后续做 AI 教育产品的底层方法论。</p>'
+      }
+    ],
+    meta: [
+      { label: 'Timeline', value: '2024.09—25.04' },
+      { label: 'Role', value: '<em>产品负责人</em>' },
+      { label: 'Stack', value: 'ASR · LLM · TTS' },
+      { label: 'Users', value: '8 访谈' }
+    ]
+  },
+  '03': {
+    mark: 'LXD',
+    markSmall: 'Scaffolded Argumentative Writing',
+    heroClass: 'viz-grad-2',
+    eyebrow: ['Project 003', 'Research · LXD 研究'],
+    title: 'A <em>scaffolded writing tool</em> built on the iterative design loop.',
+    cn: 'AI 支持的学习体验设计研究 · 议论文写作支架',
+    sections: [
+      {
+        h: 'Context / 研究背景',
+        body: '<p>学习体验设计（Learning Experience Design）领域里，AI 辅助工具大多停留在"生成"层面，<em>缺乏对学习过程本身的支架</em>。本研究希望把 AI 嵌入议论文写作的认知阶梯里，而不是替学生写完。</p>'
+      },
+      {
+        h: 'Process / 研究路径',
+        body: '<ul><li>参与 LXD 系统文献综述，梳理 AI 辅助学习设计的工具现状与设计模式。</li><li>确立<b>迭代设计循环</b>为核心框架（设计→测试→迭代→再测试）。</li><li>独立开发集成 AI 写作 API 的 Web 原型。</li><li>嵌入<em>思维链支架</em>支持学生议论文写作。</li><li>完成完整设计-测试-迭代闭环。</li></ul>'
+      },
+      {
+        h: 'Takeaway / 我的判断',
+        body: '<p>把 AI 当"枪手"很容易，把 AI 设计成"陪练"才难。这次研究给我的最大启发是<strong>支架的形式必须随学生当下的认知状态变化</strong>——一刀切的 prompt 模板永远做不到这一点，必须有迭代设计的耐心。</p>'
+      }
+    ],
+    meta: [
+      { label: 'Timeline', value: '2024.09—25.04' },
+      { label: 'Role', value: '研究成员' },
+      { label: 'Lab', value: '深圳大学' },
+      { label: 'Method', value: 'Iterative' }
+    ]
+  },
+  '04': {
+    mark: '一带一路',
+    markSmall: 'Motion Infographic · Belt & Road',
+    heroClass: 'viz-grad-4',
+    eyebrow: ['Project 004', 'Visualization · 信息可视化', '<b>全国二等奖</b>'],
+    title: '<em>30+ datasets,</em> turned into a story a learner can follow.',
+    cn: '《一带一路 · 百花齐放》动态 MG 信息可视化',
+    sections: [
+      {
+        h: 'Brief / 命题',
+        body: '<p>把"一带一路"涵盖的政治、经济、人文等复杂数据，做成<em>面向学习者</em>的动态信息可视化作品——既要专业准确，又不能只面向研究者。</p>'
+      },
+      {
+        h: 'Approach / 我的做法',
+        body: '<ul><li>整合 <b>30+ 套</b>来自不同渠道的数据集，做清洗和归一化。</li><li>设计认知节奏曲线：先建立宏观框架，再下钻到具体国家与数据。</li><li>用动态 MG 的节奏代替密集图表轰炸，让信息逐层揭开。</li><li>聚焦<em>学习者的注意力曲线</em>，而非堆砌信息密度。</li></ul>'
+      },
+      {
+        h: 'Result / 成果',
+        body: '<p>作品获中国大学生计算机设计大赛<strong>全国二等奖、省级一等奖</strong>。这个项目让我意识到——可视化的核心不是数据本身的密度，是"翻译"的功夫。</p>'
+      }
+    ],
+    meta: [
+      { label: 'Timeline', value: '2023.11—24.08' },
+      { label: 'Award', value: '<em>国二 · 省一</em>' },
+      { label: 'Role', value: '项目负责人' },
+      { label: 'Datasets', value: '30+' }
+    ]
+  },
+  '05': {
+    mark: '探索<br/>无限',
+    markSmall: 'HTML5 + AR Comic',
+    heroClass: 'viz-grad-5',
+    eyebrow: ['Project 005', 'Interactive · AR 漫画', '<b>全国二等奖</b>'],
+    title: 'An <em>AR-powered HTML5 comic</em> for math &amp; aerospace.',
+    cn: '《探索无限》交互新媒体漫画',
+    sections: [
+      {
+        h: 'Concept / 想法',
+        body: '<p>抽象数学与航天知识对中小学生最不友好的，不是难度，而是"<em>看不见摸不着</em>"。这个项目想把它们做成一本可以触碰的漫画——故事线讲完，AR 把数学公式和航天器从纸上立起来。</p>'
+      },
+      {
+        h: 'Build / 技术实现',
+        body: '<ul><li><b>HTML5 互动漫画</b>主线，承担故事叙事与基础交互。</li><li>抽象数学概念与航天知识可视化：从二维几何到三维轨道。</li><li>集成 <b>AR 沉浸式学习体验</b>，使用 Nomad 3D 建模 + Kivisense AR SDK。</li><li>从"读"走到"触"——学习者用手机扫描页面就能看到三维结构。</li></ul>'
+      },
+      {
+        h: 'Result',
+        body: '<p>中国大学生计算机设计大赛<strong>全国二等奖、省级一等奖</strong>。是我第一次把"叙事 + 交互 + AR"三种媒介在一个学习产品里串起来。</p>'
+      }
+    ],
+    meta: [
+      { label: 'Timeline', value: '2024.01—08' },
+      { label: 'Award', value: '<em>国二 · 省一</em>' },
+      { label: 'Stack', value: 'Nomad · Kivisense' },
+      { label: 'Role', value: '项目负责人' }
+    ]
+  },
+  '06': {
+    mark: '拜师<br/>学医',
+    markSmall: '2,000+ Interactions',
+    heroClass: 'viz-grad-1',
+    eyebrow: ['Project 006', 'Interactive · HTML5', '<b>全国三等奖</b>'],
+    title: '<em>2,000+ user interactions</em> with a Chinese medicine learning experience.',
+    cn: '《拜师学医》交互 HTML5 网页',
+    sections: [
+      {
+        h: 'Brief',
+        body: '<p>中医知识体系庞大、术语门槛高，想用一个轻量化的交互页面让普通用户也能"<em>沉浸式入门</em>"。</p>'
+      },
+      {
+        h: 'Build',
+        body: '<ul><li>基于 <b>Epub360</b> 平台搭建交互流程，融合诊脉、抓药、问诊等情境。</li><li>在「内容专业」与「交互友好」之间找到一条窄路：把术语藏在场景里，而不是知识卡片里。</li><li>项目负责人，统筹策划、视觉、交互。</li></ul>'
+      },
+      {
+        h: 'Result',
+        body: '<p>上线后累计 <strong>2,000+ 次用户交互</strong>，获中国大学生计算机设计大赛<strong>全国三等奖、省级二等奖</strong>。这是我最早一次验证"游戏化叙事"在知识学习里的有效性。</p>'
+      }
+    ],
+    meta: [
+      { label: 'Timeline', value: '2023.03—08' },
+      { label: 'Award', value: '<em>国三 · 省二</em>' },
+      { label: 'Interactions', value: '<em>2,000+</em>' },
+      { label: 'Platform', value: 'Epub360' }
+    ]
+  }
+};
+
+const overlay = document.getElementById('modalOverlay');
+const modal = document.getElementById('modal');
+const modalClose = document.getElementById('modalClose');
+const modalHero = document.getElementById('modalHero');
+const modalHeroMark = document.getElementById('modalHeroMark');
+const modalBody = document.getElementById('modalBody');
+
+function openModal(id) {
+  const d = workData[id];
+  if (!d) return;
+
+  modalHero.className = 'modal-hero ' + d.heroClass;
+  modalHeroMark.innerHTML = `${d.mark}<span class="small">${d.markSmall}</span>`;
+  if (d.heroClass === 'viz-grad-4') {
+    modalHeroMark.style.color = 'var(--accent-soft)';
+  } else {
+    modalHeroMark.style.color = '';
+  }
+
+  const eyebrowHtml = d.eyebrow.map(e => `<span>${e}</span>`).join('');
+  const sectionsHtml = d.sections.map(s =>
+    `<div class="modal-section"><div class="modal-section-h">${s.h}</div>${s.body}</div>`
+  ).join('');
+  const metaHtml = d.meta.map(m =>
+    `<div class="modal-meta-item"><div class="modal-meta-label">${m.label}</div><div class="modal-meta-value">${m.value}</div></div>`
+  ).join('');
+
+  modalBody.innerHTML = `
+    <div class="modal-eyebrow">${eyebrowHtml}</div>
+    <h2 class="modal-title" id="modalTitle">${d.title}</h2>
+    <div class="modal-cn">${d.cn}</div>
+    ${sectionsHtml}
+    <div class="modal-meta-grid">${metaHtml}</div>
+    <div class="modal-cta-hint">Press <kbd>esc</kbd> to close · or click outside</div>
+  `;
+
+  overlay.hidden = false;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    overlay.classList.add('open');
+    document.body.classList.add('modal-open');
+  }));
+
+  modalClose.focus();
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.classList.remove('modal-open');
+  setTimeout(() => { overlay.hidden = true; }, 400);
+}
+
+document.querySelectorAll('.work[data-work]').forEach(w => {
+  w.addEventListener('click', () => openModal(w.dataset.work));
+  w.style.cursor = 'pointer';
+  w.setAttribute('role', 'button');
+  w.setAttribute('tabindex', '0');
+  w.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openModal(w.dataset.work);
+    }
+  });
+});
+
+modalClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+});
+</script>
+
+</body>
+</html>
